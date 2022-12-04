@@ -1,4 +1,6 @@
 import Link from "next/link";
+import styles from "./eventItem.module.css";
+
 export default function EventItem(props) {
   const { title, image, date, location, id } = props;
 
@@ -8,23 +10,23 @@ export default function EventItem(props) {
     year: "numeric",
   });
 
-  const formattedAddress = location;
+  const formattedAddress = location.replace(", ", "\n");
   const exploreLink = `/events/${id}`;
   return (
-    <li>
+    <li className={styles.item}>
       <img src={"/" + image} alt="" />
-      <div>
-        <div>
+      <div className={styles.content}>
+        <div className={styles.summary}>
           <h2>{title}</h2>
-          <div>
+          <div className={styles.date}>
             <time>{humanReadableDate}</time>
           </div>
-          <div>
+          <div className={styles.address}>
             <address>{formattedAddress}</address>
           </div>
         </div>
 
-        <div>
+        <div className={styles.actions}>
           <Link href={exploreLink}>Explore Event</Link>
         </div>
       </div>
