@@ -24,3 +24,7 @@ a {
     background: black;
   }
 }
+
+.center {
+  text-align: center;
+}
